@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://shaishai.cqoj.xyz/server%20web1/static/js/jquery.min.js" type="application/javascript"></script> 
+    <link rel="stylesheet" href="https://shaishai.cqoj.xyz/server%20web1/static/css/style.css" type="text/css"> 
+    <link rel="stylesheet" href="https://shaishai.cqoj.xyz/server%20web1/static/css/fontawesome-free5.13.0.css" type="text/css">
+    <title>接收禮物</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .browser-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .search-engine-select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .search-button {
+            border: none;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+
+        .browser-content {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .browser-content a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .browser-content a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="browser-container">
+    <h2>溫馨提示</h2>
+    <p>如果密碼錯誤則會顯示其他頁面哦！</p>
+    <h2>接收禮物</h2>
+<select class="search-engine-select" id="searchEngine">
+            <option value="http://kingo.angid.eu.org/test/gift/">2023-聖誕節禮物</option>
+            <option value="https://so.toutiao.com/search?keyword=">头条Toutiao</option>
+       </select>
+        <input type="password" class="search-bar" id="searchBar" placeholder="請在此貼上或輸入密碼">
+        <button class="search-button" onclick="abc()">接收禮物</button>
+        <div class="browser-content" id="browserContent" style="color:red;"></div>
+        <div class="footer"> 
+            <p><a> © 版权所有 2024 張敬浩</a></p> 
+    </div>
+</div>
+    <script>
+    browserContent.innerHTML = '<p>錯誤:密碼不正確(501)</p>';
+        function abc() {
+            const searchBar = document.getElementById('searchBar');
+            const searchEngine = document.getElementById('searchEngine');
+            const browserContent = document.getElementById('browserContent');
+
+            const searchTerm = searchBar.value.trim();
+            const engineUrl = searchEngine.value;
+
+            if (searchTerm !== "") {
+                const url = searchTerm.startsWith('http') ? searchTerm : `http://${searchTerm}`;
+                 window.open(`${engineUrl}${encodeURIComponent(searchTerm)}.html`, '_blank');
+            } else {
+                browserContent.innerHTML = '<p>錯誤:密碼讀取失敗(20)</p>';
+            }
+        }
+    </script>
+</body>
+</html>
